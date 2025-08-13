@@ -1,0 +1,43 @@
+{
+  "name": "playwright-test",
+  "version": "1.0.0",
+  "description": "Comprehensive test suite for cards and tags verification using Page Object Model",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report",
+    "test:install": "playwright install",
+    "test:codegen": "playwright codegen",
+    "test:cards": "playwright test tests/cards-and-tags.spec.ts",
+    "test:cards:headed": "playwright test tests/cards-and-tags.spec.ts --headed",
+    "test:cards:debug": "playwright test tests/cards-and-tags.spec.ts --debug",
+    "test:cards:report": "playwright test tests/cards-and-tags.spec.ts --reporter=html",
+    "test:login": "playwright test tests/login.spec.ts",
+    "test:login:headed": "playwright test tests/login.spec.ts --headed",
+    "test:login:debug": "playwright test tests/login.spec.ts --debug",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "keywords": [
+    "playwright",
+    "testing",
+    "page-object-model",
+    "cards",
+    "tags",
+    "automation"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.54.2",
+    "@types/node": "^24.2.1",
+    "prettier": "^3.4.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.1"
+  }
+}

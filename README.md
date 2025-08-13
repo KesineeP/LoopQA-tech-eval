@@ -1,0 +1,133 @@
+# Cards and Tags Test Suite
+
+This test suite verifies all relevant details regarding cards and tags within the project management application using the Page Object Model pattern.
+
+## Test Structure
+
+### Page Objects
+
+- **LoginPage** (`pages/LoginPage.ts`): Handles authentication functionality
+- **DashboardPage** (`pages/DashboardPage.ts`): Manages dashboard interactions
+- **CardPage** (`pages/CardPage.ts`): Handles card-specific operations and data extraction
+
+### Test Categories
+
+1. **Authentication Tests**
+   - Login with valid credentials
+   - Logout functionality
+
+2. **Project Cards Tests**
+   - Verify all expected project cards are displayed
+   - Validate project card details
+
+3. **Task Cards Tests**
+   - Verify all expected task cards are displayed
+   - Validate task card structure and details
+   - Test specific task details
+
+4. **Status Columns Tests**
+   - Verify all status columns are present
+   - Validate task distribution across status columns
+
+5. **Tags Tests**
+   - Verify all expected tags are present
+   - Test task filtering by tags
+   - Validate tag consistency
+
+6. **Assignees Tests**
+   - Verify all expected assignees are present
+   - Test task filtering by assignee
+
+7. **Data Integrity Tests**
+   - Verify no duplicate task titles
+   - Validate consistent data across all task cards
+
+## Test Data
+
+### Expected Projects
+
+- Web Application
+- Mobile Application
+- Marketing Campaign
+
+### Expected Tasks
+
+- Implement user authentication (To Do, High Priority, Sarah Chen, Feature)
+- Fix navigation bug (To Do, John Smith, Bug)
+- Design system updates (In Progress, Emma Wilson, Design)
+- API integration (Review, High Priority, Mike Johnson, Feature)
+- Update documentation (Done, Lisa Brown, Feature)
+
+### Expected Tags
+
+- Feature
+- Bug
+- Design
+
+### Expected Assignees
+
+- Sarah Chen
+- John Smith
+- Emma Wilson
+- Mike Johnson
+- Lisa Brown
+
+### Expected Statuses
+
+- To Do
+- In Progress
+- Review
+- Done
+
+## Running Tests
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in headed mode
+npm run test:headed
+
+# Run specific test file
+npx playwright test tests/cards-and-tags.spec.ts
+
+# Run tests with UI
+npm run test:ui
+
+# Generate test report
+npm run test:report
+```
+
+## Environment Variables
+
+The tests use the following environment variables from `.env`:
+
+- `USERNAME`: Login username (default: admin)
+- `PASSWORD`: Login password (default: password123%)
+- `BASE_URL`: Application URL (default: https://animated-gingersnap-8cf7f2.netlify.app)
+
+## Page Object Model Benefits
+
+1. **Reusability**: Page objects can be reused across multiple tests
+2. **Maintainability**: Changes to selectors only need to be made in one place
+3. **Readability**: Tests are more readable and focused on business logic
+4. **Separation of Concerns**: UI interactions are separated from test logic
+5. **Minimized Duplication**: Common operations are centralized in page objects
+
+## Test Coverage
+
+The test suite covers:
+
+- ✅ Authentication flow
+- ✅ Project card verification
+- ✅ Task card verification
+- ✅ Status column validation
+- ✅ Tag verification and filtering
+- ✅ Assignee verification and filtering
+- ✅ Data integrity checks
+- ✅ Card details validation
+- ✅ Error handling
+
+## Screenshots
+
+Test screenshots are saved to the `screenshots/` directory for debugging purposes.
