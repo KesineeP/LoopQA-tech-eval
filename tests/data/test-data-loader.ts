@@ -46,7 +46,7 @@ export interface Priority {
 }
 
 export interface TestData {
-  credentials: { valid: Credentials; invalid: Credentials };
+  credentials?: { valid: Credentials; invalid: Credentials };
   projects: Project[];
   tags: Tag[];
   assignees: Assignee[];
@@ -58,7 +58,27 @@ export class TestDataLoader {
   private static data: TestData = testData;
 
   static getCredentials(type: "valid" | "invalid" = "valid"): Credentials {
-    return this.data.credentials[type];
+    if (type === "valid") {
+      const username = process.env.USERNAME;
+      const password = process.env.PASSWORD;
+
+      if (!username || !password) {
+        throw new Error(
+          "Missing required environment variables: USERNAME and PASSWORD must be set in .env file"
+        );
+      }
+
+      return {
+        username,
+        password,
+      };
+    } else {
+      // For invalid credentials, return dummy values
+      return {
+        username: "invalid",
+        password: "wrongpassword",
+      };
+    }
   }
 
   static getProjectNames(): string[] {

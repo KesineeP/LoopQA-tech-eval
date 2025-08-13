@@ -1,14 +1,12 @@
 import { test, expect } from "@playwright/test";
 import { LoginPage } from "./pages/LoginPage";
-import { DashboardPage } from "./pages/DashboardPage";
-import { CardPage, TaskCard } from "./pages/CardPage";
+import { DashboardPage, TaskCard } from "./pages/DashboardPage";
 import { TestDataLoader } from "./data/test-data-loader";
 import { LoginHelper } from "./utils/login-helper";
 
 test.describe("Cards and Tags Test Suite", () => {
   let loginPage: LoginPage;
   let dashboardPage: DashboardPage;
-  let cardPage: CardPage;
 
   test.beforeEach(async ({ page }) => {
     // Login once per test using the helper
@@ -16,13 +14,12 @@ test.describe("Cards and Tags Test Suite", () => {
       await LoginHelper.login(page);
     loginPage = login;
     dashboardPage = dashboard;
-    cardPage = new CardPage(page);
   });
 
   test.describe("Project Cards", () => {
     test("should display all expected project cards", async ({ page }) => {
       const expectedProjects = TestDataLoader.getProjectNames();
-      const actualProjects = await cardPage.getProjectCards();
+      const actualProjects = await dashboardPage.getProjectNames();
 
       expect(actualProjects).toEqual(expect.arrayContaining(expectedProjects));
       expect(actualProjects.length).toBeGreaterThanOrEqual(
@@ -31,7 +28,7 @@ test.describe("Cards and Tags Test Suite", () => {
     });
 
     test("should verify project card details", async ({ page }) => {
-      const projects = await cardPage.getProjectCards();
+      const projects = await dashboardPage.getProjectNames();
 
       for (const project of projects) {
         expect(project).toBeTruthy();
@@ -55,12 +52,12 @@ test.describe("Cards and Tags Test Suite", () => {
 
         // Verify each task in this project is visible
         for (const task of project.tasks) {
-          await cardPage.expectTaskCardVisible(task.title);
+          await dashboardPage.expectTaskCardVisible(task.title);
         }
 
         // Verify task card structure and details
         for (const task of project.tasks) {
-          const taskCard = await cardPage.getTaskCardDetails(task.title);
+          const taskCard = await dashboardPage.getTaskCardDetails(task.title);
 
           if (taskCard) {
             expect(taskCard.title).toBe(task.title);
@@ -94,7 +91,8 @@ test.describe("Cards and Tags Test Suite", () => {
             project.name,
             status
           );
-          const actualTasksInStatus = await cardPage.getTasksByStatus(status);
+          const actualTasksInStatus =
+            await dashboardPage.getTasksByStatus(status);
 
           // Filter actual tasks to only include those from this project
           const projectTasksInStatus = actualTasksInStatus.filter(task =>
@@ -126,7 +124,7 @@ test.describe("Cards and Tags Test Suite", () => {
 
         // Verify each tag is present
         for (const tag of projectTags) {
-          const tasksWithTag = await cardPage.getTasksByTag(tag);
+          const tasksWithTag = await dashboardPage.getTasksByTag(tag);
           const expectedTasksWithTag = TestDataLoader.getProjectTasksByTag(
             project.name,
             tag
@@ -166,7 +164,8 @@ test.describe("Cards and Tags Test Suite", () => {
 
         // Verify each assignee is present
         for (const assignee of projectAssignees) {
-          const tasksForAssignee = await cardPage.getTasksByAssignee(assignee);
+          const tasksForAssignee =
+            await dashboardPage.getTasksByAssignee(assignee);
           const expectedTasksForAssignee =
             TestDataLoader.getProjectTasksByAssignee(project.name, assignee);
 
@@ -195,7 +194,7 @@ test.describe("Cards and Tags Test Suite", () => {
         await page.waitForLoadState("networkidle");
 
         // Get all tasks for this project
-        const allTasks = await cardPage.getAllTaskCards();
+        const allTasks = await dashboardPage.getAllTaskCards();
 
         // Verify no duplicate task titles
         const taskTitles = allTasks.map(task => task.title);

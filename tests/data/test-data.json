@@ -1,14 +1,4 @@
 {
-  "credentials": {
-    "valid": {
-      "username": "admin",
-      "password": "password123%"
-    },
-    "invalid": {
-      "username": "invalid",
-      "password": "wrongpassword"
-    }
-  },
   "projects": [
     {
       "name": "Web Application",

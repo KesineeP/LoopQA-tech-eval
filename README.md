@@ -7,8 +7,7 @@ This test suite verifies all relevant details regarding cards and tags within th
 ### Page Objects
 
 - **LoginPage** (`pages/LoginPage.ts`): Handles authentication functionality
-- **DashboardPage** (`pages/DashboardPage.ts`): Manages dashboard interactions
-- **CardPage** (`pages/CardPage.ts`): Handles card-specific operations and data extraction
+- **DashboardPage** (`pages/DashboardPage.ts`): Manages dashboard interactions and card operations
 
 ### Test Categories
 
@@ -57,6 +56,12 @@ This test suite verifies all relevant details regarding cards and tags within th
 - Design system updates (In Progress, Emma Wilson, Design)
 - API integration (Review, High Priority, Mike Johnson, Feature)
 - Update documentation (Done, Lisa Brown, Feature)
+- Push notification system (To Do, David Kim, Feature)
+- Offline mode (In Progress, High Priority, Rachel Green, Feature)
+- App icon design (Done, Emma Wilson, Design)
+- Social media calendar (To Do, Sophie Turner, Feature)
+- Email campaign (In Progress, High Priority, Mark Wilson, Design)
+- Landing page copy (Review, Lisa Brown, Design)
 
 ### Expected Tags
 
@@ -71,6 +76,10 @@ This test suite verifies all relevant details regarding cards and tags within th
 - Emma Wilson
 - Mike Johnson
 - Lisa Brown
+- David Kim
+- Rachel Green
+- Sophie Turner
+- Mark Wilson
 
 ### Expected Statuses
 
@@ -102,9 +111,11 @@ npm run test:report
 
 The tests use the following environment variables from `.env`:
 
-- `USERNAME`: Login username (default: admin)
-- `PASSWORD`: Login password (default: password123%)
-- `BASE_URL`: Application URL (default: https://animated-gingersnap-8cf7f2.netlify.app)
+- `USERNAME`: Login username (required)
+- `PASSWORD`: Login password (required)
+- `BASE_URL`: Application URL (required)
+
+If any required environment variables are missing, the tests will fail with a clear error message.
 
 ## Page Object Model Benefits
 
@@ -113,6 +124,13 @@ The tests use the following environment variables from `.env`:
 3. **Readability**: Tests are more readable and focused on business logic
 4. **Separation of Concerns**: UI interactions are separated from test logic
 5. **Minimized Duplication**: Common operations are centralized in page objects
+
+## Security Features
+
+- ✅ No hardcoded credentials in source code
+- ✅ Credentials only come from environment variables
+- ✅ Clear error messages for missing environment variables
+- ✅ `.env` file is properly ignored by version control
 
 ## Test Coverage
 

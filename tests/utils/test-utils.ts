@@ -6,9 +6,18 @@ export interface TestCredentials {
 }
 
 export function getTestCredentials(): TestCredentials {
+  const username = process.env.USERNAME;
+  const password = process.env.PASSWORD;
+
+  if (!username || !password) {
+    throw new Error(
+      "Missing required environment variables: USERNAME and PASSWORD must be set in .env file"
+    );
+  }
+
   return {
-    username: process.env.USERNAME || "admin",
-    password: process.env.PASSWORD || "password123%",
+    username,
+    password,
   };
 }
 
