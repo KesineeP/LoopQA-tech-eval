@@ -20,15 +20,4 @@ export class LoginHelper {
 
     return { loginPage, dashboardPage };
   }
-
-  static async loginAndVerify(
-    page: Page
-  ): Promise<{ loginPage: LoginPage; dashboardPage: DashboardPage }> {
-    const { loginPage, dashboardPage } = await this.login(page);
-
-    // Additional verification that we're logged in
-    await dashboardPage.expectDashboardLoaded();
-
-    return { loginPage, dashboardPage };
-  }
 }

@@ -13,6 +13,7 @@ This test suite verifies all relevant details regarding cards and tags within th
 
 1. **Authentication Tests**
    - Login with valid credentials
+   - Login with invalid credentials (error handling)
    - Logout functionality
 
 2. **Project Cards Tests**
@@ -117,6 +118,8 @@ The tests use the following environment variables from `.env`:
 
 If any required environment variables are missing, the tests will fail with a clear error message.
 
+**Important**: Never commit the `.env` file to version control. It's already included in `.gitignore`.
+
 ## Page Object Model Benefits
 
 1. **Reusability**: Page objects can be reused across multiple tests
@@ -131,12 +134,21 @@ If any required environment variables are missing, the tests will fail with a cl
 - ✅ Credentials only come from environment variables
 - ✅ Clear error messages for missing environment variables
 - ✅ `.env` file is properly ignored by version control
+- ✅ Support for both valid and invalid credential testing
+
+## Code Quality
+
+- ✅ Clean, maintainable codebase
+- ✅ No unused code or dead functions
+- ✅ Proper TypeScript typing
+- ✅ Consistent code formatting
+- ✅ Comprehensive test coverage
 
 ## Test Coverage
 
 The test suite covers:
 
-- ✅ Authentication flow
+- ✅ Authentication flow (valid and invalid credentials)
 - ✅ Project card verification
 - ✅ Task card verification
 - ✅ Status column validation
@@ -145,6 +157,26 @@ The test suite covers:
 - ✅ Data integrity checks
 - ✅ Card details validation
 - ✅ Error handling
+- ✅ Navigation between projects
+- ✅ Logout functionality
+
+## Project Structure
+
+```
+tests/
+├── pages/
+│   ├── LoginPage.ts          # Authentication page object
+│   └── DashboardPage.ts      # Dashboard and card operations
+├── data/
+│   ├── test-data.json        # Test data (no credentials)
+│   └── test-data-loader.ts   # Data loading utilities
+├── utils/
+│   ├── login-helper.ts       # Login utility functions
+│   └── test-utils.ts         # General test utilities
+├── cards-and-tags.spec.ts    # Main test suite
+├── login.spec.ts             # Authentication tests
+└── navigation.spec.ts        # Navigation tests
+```
 
 ## Screenshots
 

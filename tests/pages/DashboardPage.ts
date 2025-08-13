@@ -12,23 +12,11 @@ export interface TaskCard {
 
 export class DashboardPage {
   readonly page: Page;
-  readonly projectCards: Locator;
-  readonly taskCards: Locator;
   readonly logoutButton: Locator;
-  readonly statusColumns: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.projectCards = page.locator(
-      'button:has-text("Web Application"), button:has-text("Mobile Application"), button:has-text("Marketing Campaign")'
-    );
-    this.taskCards = page.locator(
-      "text=Implement user authentication, text=Fix navigation bug, text=Design system updates, text=API integration, text=Update documentation"
-    );
     this.logoutButton = page.locator('button:has-text("Logout")');
-    this.statusColumns = page.locator(
-      "text=To Do, text=In Progress, text=Review, text=Done"
-    );
   }
 
   async expectDashboardLoaded() {
@@ -183,69 +171,6 @@ export class DashboardPage {
 
   async expectTaskCardVisible(title: string) {
     await expect(this.page.locator(`text=${title}`).first()).toBeVisible();
-  }
-
-  async expectTaskCardDetails(
-    title: string,
-    expectedDetails: Partial<TaskCard>
-  ) {
-    const taskCard = await this.getTaskCardDetails(title);
-
-    if (!taskCard) {
-      throw new Error(`Task card with title "${title}" not found`);
-    }
-
-    if (expectedDetails.priority) {
-      expect(taskCard.priority).toBe(expectedDetails.priority);
-    }
-
-    if (expectedDetails.assignee) {
-      expect(taskCard.assignee).toBe(expectedDetails.assignee);
-    }
-
-    if (expectedDetails.status) {
-      expect(taskCard.status).toBe(expectedDetails.status);
-    }
-
-    if (expectedDetails.tags) {
-      expect(taskCard.tags).toEqual(
-        expect.arrayContaining(expectedDetails.tags)
-      );
-    }
-  }
-
-  // Legacy methods for backward compatibility
-  async getTaskCardsByStatus(status: string): Promise<Locator[]> {
-    const statusColumn = this.page.locator(`text=${status}`).first();
-    const taskCards = statusColumn
-      .locator("xpath=..")
-      .locator(
-        "text=Implement user authentication, text=Fix navigation bug, text=Design system updates, text=API integration, text=Update documentation"
-      );
-    return await taskCards.all();
-  }
-
-  async getTaskDetails(taskTitle: string) {
-    const taskCard = this.page.locator(`text=${taskTitle}`).first();
-    const parentCard = taskCard.locator("xpath=..");
-
-    return {
-      title: await taskCard.textContent(),
-      priority: await parentCard
-        .locator("text=High Priority, text=Medium Priority, text=Low Priority")
-        .textContent(),
-      assignee: await parentCard
-        .locator(
-          "text=Sarah Chen, text=John Smith, text=Emma Wilson, text=Mike Johnson, text=Lisa Brown"
-        )
-        .textContent(),
-      dueDate: await parentCard
-        .locator("text=/\\d{1,2}\\/\\d{1,2}\\/\\d{4}/")
-        .textContent(),
-      tags: await parentCard
-        .locator("text=Feature, text=Bug, text=Design")
-        .allTextContents(),
-    };
   }
 
   async logout() {
