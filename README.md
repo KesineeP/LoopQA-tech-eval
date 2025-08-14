@@ -99,7 +99,7 @@ npm test
 npm run test:headed
 
 # Run specific test file
-npx playwright test tests/cards-and-tags.spec.ts
+npx playwright test tests/dashboard.spec.ts
 
 # Run tests with UI
 npm run test:ui
@@ -173,7 +173,7 @@ tests/
 ├── utils/
 │   ├── login-helper.ts       # Login utility functions
 │   └── test-utils.ts         # General test utilities
-├── cards-and-tags.spec.ts    # Main test suite
+├── dashboard.spec.ts    # Main test suite
 ├── login.spec.ts             # Authentication tests
 └── navigation.spec.ts        # Navigation tests
 ```

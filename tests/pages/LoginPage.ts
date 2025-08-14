@@ -4,7 +4,7 @@ export class LoginPage {
   readonly page: Page;
   readonly usernameInput: Locator;
   readonly passwordInput: Locator;
-  readonly loginButton: Locator;
+  readonly signinButton: Locator;
   readonly errorMessage: Locator;
 
   constructor(page: Page) {
@@ -13,7 +13,7 @@ export class LoginPage {
       'input[type="text"], input[name*="username"], input[placeholder*="username" i]'
     );
     this.passwordInput = page.locator('input[type="password"]');
-    this.loginButton = page.locator(
+    this.signinButton = page.locator(
       'button[type="submit"], button:has-text("Sign in")'
     );
     this.errorMessage = page.locator("div > div > form > div", {
@@ -29,14 +29,14 @@ export class LoginPage {
   async login(username: string, password: string) {
     await this.usernameInput.fill(username);
     await this.passwordInput.fill(password);
-    await this.loginButton.click();
+    await this.signinButton.click();
     await this.page.waitForLoadState("networkidle");
   }
 
   async expectLoginFormVisible() {
     await expect(this.usernameInput).toBeVisible();
     await expect(this.passwordInput).toBeVisible();
-    await expect(this.loginButton).toBeVisible();
+    await expect(this.signinButton).toBeVisible();
   }
 
   async expectErrorMessageVisible() {

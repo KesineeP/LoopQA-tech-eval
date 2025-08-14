@@ -8,45 +8,40 @@
           "title": "Implement user authentication",
           "description": "Add login and signup functionality",
           "status": "To Do",
-          "priority": "High Priority",
           "assignee": "Sarah Chen",
-          "dueDate": "3/24/2024",
-          "tags": ["Feature"]
+          "createdOn": "3/24/2024",
+          "tags": ["Feature", "High Priority"]
         },
         {
           "title": "Fix navigation bug",
           "description": "Menu does not close on mobile",
           "status": "To Do",
-          "priority": "",
           "assignee": "John Smith",
-          "dueDate": "3/19/2024",
+          "createdOn": "3/19/2024",
           "tags": ["Bug"]
         },
         {
           "title": "Design system updates",
           "description": "Update color palette and typography",
           "status": "In Progress",
-          "priority": "",
           "assignee": "Emma Wilson",
-          "dueDate": "3/21/2024",
+          "createdOn": "3/21/2024",
           "tags": ["Design"]
         },
         {
           "title": "API integration",
           "description": "Connect to payment gateway",
           "status": "Review",
-          "priority": "High Priority",
           "assignee": "Mike Johnson",
-          "dueDate": "3/20/2024",
-          "tags": ["Feature"]
+          "createdOn": "3/20/2024",
+          "tags": ["Feature", "High Priority"]
         },
         {
           "title": "Update documentation",
           "description": "Add API endpoints documentation",
           "status": "Done",
-          "priority": "",
           "assignee": "Lisa Brown",
-          "dueDate": "3/17/2024",
+          "createdOn": "3/17/2024",
           "tags": ["Feature"]
         }
       ]
@@ -59,27 +54,24 @@
           "title": "Push notification system",
           "description": "Implement push notifications for iOS and Android",
           "status": "To Do",
-          "priority": "",
           "assignee": "David Kim",
-          "dueDate": "3/27/2024",
+          "createdOn": "3/27/2024",
           "tags": ["Feature"]
         },
         {
           "title": "Offline mode",
           "description": "Enable offline data synchronization",
           "status": "In Progress",
-          "priority": "High Priority",
           "assignee": "Rachel Green",
-          "dueDate": "3/23/2024",
-          "tags": ["Feature"]
+          "createdOn": "3/23/2024",
+          "tags": ["Feature", "High Priority"]
         },
         {
           "title": "App icon design",
           "description": "Create app icons for all required sizes",
           "status": "Done",
-          "priority": "",
           "assignee": "Emma Wilson",
-          "dueDate": "3/14/2024",
+          "createdOn": "3/14/2024",
           "tags": ["Design"]
         }
       ]
@@ -92,27 +84,24 @@
           "title": "Social media calendar",
           "description": "Plan content for next month",
           "status": "To Do",
-          "priority": "",
           "assignee": "Sophie Turner",
-          "dueDate": "3/29/2024",
+          "createdOn": "3/29/2024",
           "tags": ["Feature"]
         },
         {
           "title": "Email campaign",
           "description": "Design and implement Q2 email campaign",
           "status": "In Progress",
-          "priority": "High Priority",
           "assignee": "Mark Wilson",
-          "dueDate": "3/25/2024",
-          "tags": ["Design"]
+          "createdOn": "3/25/2024",
+          "tags": ["Design", "High Priority"]
         },
         {
           "title": "Landing page copy",
           "description": "Review and approve landing page content",
           "status": "Review",
-          "priority": "",
           "assignee": "Lisa Brown",
-          "dueDate": "3/22/2024",
+          "createdOn": "3/22/2024",
           "tags": ["Design"]
         }
       ]
@@ -144,6 +133,16 @@
         "App icon design",
         "Email campaign",
         "Landing page copy"
+      ]
+    },
+    {
+      "name": "High Priority",
+      "count": 4,
+      "tasks": [
+        "Implement user authentication",
+        "API integration",
+        "Offline mode",
+        "Email campaign"
       ]
     }
   ],
@@ -219,28 +218,6 @@
       "name": "Done",
       "count": 2,
       "tasks": ["Update documentation", "App icon design"]
-    }
-  ],
-  "priorities": [
-    {
-      "name": "High Priority",
-      "count": 4,
-      "tasks": [
-        "Implement user authentication",
-        "API integration",
-        "Offline mode",
-        "Email campaign"
-      ]
-    },
-    {
-      "name": "Medium Priority",
-      "count": 0,
-      "tasks": []
-    },
-    {
-      "name": "Low Priority",
-      "count": 0,
-      "tasks": []
     }
   ]
 }

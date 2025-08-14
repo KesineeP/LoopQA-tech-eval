@@ -9,9 +9,8 @@ export interface Task {
   title: string;
   description: string;
   status: string;
-  priority: string;
   assignee: string;
-  dueDate: string;
+  createdOn: string;
   tags: string[];
 }
 
@@ -51,7 +50,6 @@ export interface TestData {
   tags: Tag[];
   assignees: Assignee[];
   statuses: Status[];
-  priorities: Priority[];
 }
 
 export class TestDataLoader {
@@ -150,20 +148,7 @@ export class TestDataLoader {
     return this.data.statuses;
   }
 
-  static getPriorityNames(): string[] {
-    return this.data.priorities.map(priority => priority.name);
-  }
-
-  static getPriorities(): Priority[] {
-    return this.data.priorities;
-  }
-
   // Project-specific methods
-  static getProjectTaskCount(projectName: string): number {
-    const project = this.getProjectByName(projectName);
-    return project ? project.tasks.length : 0;
-  }
-
   static getProjectTasksByStatus(projectName: string, status: string): Task[] {
     const project = this.getProjectByName(projectName);
     return project ? project.tasks.filter(task => task.status === status) : [];
@@ -182,18 +167,5 @@ export class TestDataLoader {
     return project
       ? project.tasks.filter(task => task.assignee === assignee)
       : [];
-  }
-
-  // Helper methods for aggregated data
-  static getAllTaskTitles(): string[] {
-    return this.getTaskTitles();
-  }
-
-  static getTaskByTitle(title: string): Task | undefined {
-    for (const project of this.data.projects) {
-      const task = project.tasks.find(task => task.title === title);
-      if (task) return task;
-    }
-    return undefined;
   }
 }
