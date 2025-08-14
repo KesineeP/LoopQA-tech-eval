@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
-import { TestDataLoader } from "./data/test-data-loader";
-import { LoginHelper } from "./utils/login-helper";
+import { TestDataLoader } from "../data/test-data-loader";
+import { LoginHelper } from "../utils/login-helper";
 
 test.describe("Navigation Tests", () => {
   test("should test navigation between all projects", async ({ page }) => {

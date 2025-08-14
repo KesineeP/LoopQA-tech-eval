@@ -1,6 +1,6 @@
 import { Page } from "@playwright/test";
-import { LoginPage } from "../pages/LoginPage";
-import { DashboardPage } from "../pages/DashboardPage";
+import { LoginPage } from "../page-objects/LoginPage";
+import { DashboardPage } from "../page-objects/DashboardPage";
 import { TestDataLoader } from "../data/test-data-loader";
 
 export class LoginHelper {

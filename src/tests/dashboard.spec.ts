@@ -1,8 +1,8 @@
 import { test, expect } from "@playwright/test";
-import { LoginPage } from "./pages/LoginPage";
-import { DashboardPage } from "./pages/DashboardPage";
-import { TestDataLoader } from "./data/test-data-loader";
-import { LoginHelper } from "./utils/login-helper";
+import { LoginPage } from "../page-objects/LoginPage";
+import { DashboardPage } from "../page-objects/DashboardPage";
+import { TestDataLoader } from "../data/test-data-loader";
+import { LoginHelper } from "../utils/login-helper";
 
 const projectsTestData = TestDataLoader.getProjects();
 const expectedProjects = TestDataLoader.getProjectNames();
